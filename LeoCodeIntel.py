@@ -23,7 +23,7 @@ enabled = True #if true, this plugin will work, i guess... :)
 
 
 
-class CppCodeIntelEventListener(sublime_plugin.EventListener):
+class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
 
@@ -32,7 +32,7 @@ class CppCodeIntelEventListener(sublime_plugin.EventListener):
         self.completions = [] # aqui vao todos os snippets, é regenerado a todo momento # all snippets, it will be regenerate everytime
         self.files = {} # aqui vao todos os arquivos # all files
         # self.files['file.c']['func'] vao todas as palavras # self.files['file.c']['func'] == self.completions['func']
-        settings = sublime.load_settings("cppcodeintel.sublime-settings")
+        settings = sublime.load_settings("leocodeintel.sublime-settings")
         self.show_only_last_word = settings.get("show_only_last_word", False)
         self.syntax = None #syntax atual
 
@@ -87,7 +87,7 @@ class CppCodeIntelEventListener(sublime_plugin.EventListener):
         if not self.isEnabled(view):
             return ;
         if DEBUG:
-            print('CppCodeIntel: closed: '+os.path.basename(view.file_name()))
+            print('LeoCodeIntel: closed: '+os.path.basename(view.file_name()))
         self.removeFile(view.file_name())
         self.reloadCompletions()
 
@@ -111,7 +111,7 @@ class CppCodeIntelEventListener(sublime_plugin.EventListener):
         path = os.path.dirname(file_path)
         if file_name in self.files:
             if DEBUG:
-                print('CppCodeIntel: removing file: '+file_name)
+                print('LeoCodeIntel: removing file: '+file_name)
 
             # deleta o arquivo em self.files
             del self.files[file_name]
@@ -160,7 +160,7 @@ class CppCodeIntelEventListener(sublime_plugin.EventListener):
 
 
         if DEBUG:
-            print("CppCodeIntel: loading file '"+file_name+"'")
+            print("LeoCodeIntel: loading file '"+file_name+"'")
 
 
 
@@ -221,7 +221,7 @@ class CppCodeIntelEventListener(sublime_plugin.EventListener):
         this function makes self.completions
         '''
         if DEBUG:
-            print('CppCodeIntel: reloading completions')
+            print('LeoCodeIntel: reloading completions')
             print('\tfiles to process: '+', '.join(self.files.keys()))
         del self.completions[:]
         funcs = {} # todas as funcoes definidas
