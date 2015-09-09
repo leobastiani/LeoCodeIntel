@@ -79,7 +79,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
             return ;
         self.loadFile(view.file_name(), True, self.getContentsFromView(view))
         if DEBUG:
-            print(self.completions)
+            print('LeoCodeIntel: completions:', self.completions)
 
 
 
@@ -97,6 +97,14 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
     def on_query_completions(self, view, prefix, locations):
         if not self.isEnabled(view):
             return []
+
+        if DEBUG:
+            print('LeoCodeIntel: prefix:', prefix)
+            print('LeoCodeIntel: locations:', locations)
+
+
+
+
         return self.completions
 
 
@@ -154,7 +162,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
         # não é necessário sobreescrever
-        if not (file_name not in self.files or override_file):
+        if file_name in self.files and not override_file:
             return ;
 
 
@@ -165,7 +173,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
         #cleaning the file
-        # file_contents = self.cleanCode(file_contents)
+        file_contents = self.cleanCode(file_contents)
         
 
 
@@ -188,20 +196,29 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
         #adicionando funcoes do tipo int func(parameters) # adding functions like int func(parameters)
         funcs = self.getFunctionsFromContent(file_contents)
         for (type, func_name, parameters) in funcs:
-            count = 1
-            params_splited = parameters.split(', ')
+            params_splited = re.split('\s*,\s*', parameters)
+
+
             for i, arg in enumerate(params_splited):
                 if arg == '':
                     continue
-                elif self.show_only_last_word == False:
+
+
+                elif not self.show_only_last_word:
+                    # já é o próprio arg
                     snippet_word = arg
+
+
                 else:
-                    try:
-                        snippet_word = re.search('\w+(?:\[(?:\w+)?\])*$', arg).group()
-                    except:
-                        snippet_word = arg
-                params_splited[i] = '${'+str(count)+':'+snippet_word+'}'
-                count += 1
+                    # troca os snippet
+                    search = re.search('\w+\s*$', arg)
+                    snippet_word = search.group() if search is not None else [arg]
+
+                params_splited[i] = '${'+str(i+1)+':'+snippet_word+'}'
+
+
+
+
             self.files[file_name][func_name] = func_name+'('+', '.join(params_splited)+')'
 
 
