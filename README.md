@@ -10,4 +10,4 @@ Conforme a minha necessidade, adiciono as linguagens para ele, atualmente conta 
 
 
 ## Como instalar
-No Sublime Text 3, clique em `Preferences > Browse Package`, baixe o zip deste repositório e adicione o conteúde dele numa nova pasta chamada `LeoCodeIntel`.
+No Sublime Text 3, clique em `Preferences > Browse Packages`, baixe o zip deste repositório e adicione o conteúde dele numa nova pasta chamada `LeoCodeIntel`.
