@@ -71,34 +71,27 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
 
-
-    def isEnabled(self, filePath):
+    def getSyntax(self, filePath):
         if filePath == None:
             # não tem arquivo salvo para comparar
             return False
 
+
+
+        # a syntaxe já foi consultada antes
+        if filePath in self.filesSyntax:
+            return self.filesSyntax[filePath]
+
+
+        # obtem a syntaxe pelo nome do arquivo
         fileName, fileExt = os.path.splitext(os.path.basename(filePath))
         # remove o ponto de fileExt, de .py para py
         fileExt = fileExt[1:]
 
 
-        if fileExt in extToSyntax:
-            return extToSyntax[fileExt]
-        else:
-            # não está na lista de syntaxes habilitadas
-            return False
-
-
-
-    def getSyntax(self, filePath):
-        if filePath in self.filesSyntax:
-            return self.filesSyntax[filePath]
-
-
-        syntax = self.isEnabled(filePath)
+        syntax = extToSyntax[fileExt] if fileExt in extToSyntax else 'Unknown'
         self.filesSyntax[filePath] = syntax
         return syntax
-
 
 
 
@@ -107,8 +100,9 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
     ##
     def on_activated(self, view):
         if not view:
+            # caso de nenhum arquivo aberto
             return ;
-        elif not self.isEnabled(view.file_name()):
+        elif not self.getSyntax(view.file_name()):
             return ;
         self.loadFile(view.file_name(), False, self.getContentsFromView(view))
 
@@ -130,7 +124,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
     def on_post_save_async(self, view):
-        if not self.isEnabled(view.file_name()):
+        if not self.getSyntax(view.file_name()):
             return ;
         self.loadFile(view.file_name(), True, self.getContentsFromView(view))
         if DEBUG:
@@ -139,7 +133,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
     def on_close(self, view):
-        if not self.isEnabled(view.file_name()):
+        if not self.getSyntax(view.file_name()):
             return ;
         if DEBUG:
             print('LeoCodeIntel: closed: '+os.path.basename(view.file_name()))
@@ -150,7 +144,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
     def on_query_completions(self, view, prefix, locations):
-        if not self.isEnabled(view.file_name()):
+        if not self.getSyntax(view.file_name()):
             return []
         return self.completions
 
@@ -220,6 +214,13 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
         # reseta os snippets do arquivo file_name # clear all snippets of file_name
         self.files[file_name] = {}
+
+
+
+        # carrega os snippets padrão do LeoCodeIntel
+        snippetsPadrao = re.findall(r'\bLeoCodeIntel\s+(\S+)\s+([^\n]+)', fileContents)
+        for snippet in snippetsPadrao:
+            self.files[file_name][snippet[0]+'\t'+file_name] = snippet[1]
 
 
 
