@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>len</description>
+    <content><![CDATA[len(${1:s})]]></content>
+    <tabTrigger>len</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

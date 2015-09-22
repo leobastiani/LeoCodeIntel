@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Document</description>
+    <content><![CDATA[renameNode(${1:node}, ${2:namespaceURI}, ${3:nodename})]]></content>
+    <tabTrigger>renameNode</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

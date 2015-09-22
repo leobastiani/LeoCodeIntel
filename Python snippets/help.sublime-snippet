@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>help</description>
+    <content><![CDATA[help()]]></content>
+    <tabTrigger>help</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

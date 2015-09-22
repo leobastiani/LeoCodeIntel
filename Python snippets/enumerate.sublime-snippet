@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>start=0</description>
+    <content><![CDATA[enumerate(${1:iterable})]]></content>
+    <tabTrigger>enumerate</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

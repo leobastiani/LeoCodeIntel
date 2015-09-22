@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Document</description>
+    <content><![CDATA[getElementsByClassName(${1:classname})]]></content>
+    <tabTrigger>getElementsByClassName</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

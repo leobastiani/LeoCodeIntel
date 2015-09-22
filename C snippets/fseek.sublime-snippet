@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>fseek</description>
+    <content><![CDATA[fseek(${1:FILE *stream}, ${2:offset}, ${3:origin})]]></content>
+    <tabTrigger>fseek</tabTrigger>
+    <scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

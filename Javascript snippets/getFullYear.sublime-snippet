@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Date</description>
+    <content><![CDATA[getFullYear()]]></content>
+    <tabTrigger>getFullYear</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

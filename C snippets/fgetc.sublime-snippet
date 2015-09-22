@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>fgetc</description>
+    <content><![CDATA[fgetc(${1:FILE *stream})]]></content>
+    <tabTrigger>fgetc</tabTrigger>
+    <scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

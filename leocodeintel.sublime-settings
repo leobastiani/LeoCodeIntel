@@ -1,4 +1,13 @@
 {
 	"leocodeintel-show_only_last_word": false,
-	"leocodeintel-preload_files": []
+	"leocodeintel-preload_files": [],
+	"leocodeintel-exclude_files": [
+		// Javascript
+		"jquery.js",
+
+
+
+		// Python
+		"__init__.py",
+	],
 }

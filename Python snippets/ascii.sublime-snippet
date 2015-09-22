@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>ascii</description>
+    <content><![CDATA[ascii(${1:object})]]></content>
+    <tabTrigger>ascii</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

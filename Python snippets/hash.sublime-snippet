@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>hash</description>
+    <content><![CDATA[hash(${1:object})]]></content>
+    <tabTrigger>hash</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

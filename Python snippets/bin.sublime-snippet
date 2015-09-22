@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>bin</description>
+    <content><![CDATA[bin(${1:x})]]></content>
+    <tabTrigger>bin</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

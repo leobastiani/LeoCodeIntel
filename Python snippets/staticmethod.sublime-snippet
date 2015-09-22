@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>staticmethod</description>
+    <content><![CDATA[staticmethod(${1:function})]]></content>
+    <tabTrigger>staticmethod</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

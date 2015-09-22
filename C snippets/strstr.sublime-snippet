@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>strstr</description>
+    <content><![CDATA[strstr(${1:str}, ${2:char *key})]]></content>
+    <tabTrigger>strstr</tabTrigger>
+    <scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Array</description>
+    <content><![CDATA[join(${1:separator})]]></content>
+    <tabTrigger>join</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

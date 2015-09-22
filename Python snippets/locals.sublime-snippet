@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>locals</description>
+    <content><![CDATA[locals()]]></content>
+    <tabTrigger>locals</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

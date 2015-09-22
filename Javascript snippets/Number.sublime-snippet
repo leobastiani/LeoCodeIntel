@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Global</description>
+    <content><![CDATA[Number(${1:object})]]></content>
+    <tabTrigger>Number</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

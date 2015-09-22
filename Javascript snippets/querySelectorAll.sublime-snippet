@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Document</description>
+    <content><![CDATA[querySelectorAll(${1:CSS selectors})]]></content>
+    <tabTrigger>querySelectorAll</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

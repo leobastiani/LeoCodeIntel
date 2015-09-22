@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>String</description>
+    <content><![CDATA[replace(${1:searchvalue}, ${2:newvalue})]]></content>
+    <tabTrigger>replace</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Date</description>
+    <content><![CDATA[toISOString()]]></content>
+    <tabTrigger>toISOString</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

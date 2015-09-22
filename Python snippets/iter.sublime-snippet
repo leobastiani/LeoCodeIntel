@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>iter</description>
+    <content><![CDATA[iter(${1:object})]]></content>
+    <tabTrigger>iter</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

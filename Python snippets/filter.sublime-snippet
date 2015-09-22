@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>filter</description>
+    <content><![CDATA[filter(${1:function}, ${2:iterable})]]></content>
+    <tabTrigger>filter</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>callable</description>
+    <content><![CDATA[callable(${1:object})]]></content>
+    <tabTrigger>callable</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

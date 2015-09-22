@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>String</description>
+    <content><![CDATA[search(${1:searchvalue})]]></content>
+    <tabTrigger>search</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

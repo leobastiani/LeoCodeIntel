@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Date</description>
+    <content><![CDATA[setUTCMinutes(${1:min}, ${2:sec}, ${3:millisec})]]></content>
+    <tabTrigger>setUTCMinutes</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

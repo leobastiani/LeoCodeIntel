@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>max</description>
+    <content><![CDATA[max(${1:arg1}, ${2:arg2}, ${3:*args})]]></content>
+    <tabTrigger>max</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

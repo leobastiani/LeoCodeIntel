@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>range</description>
+    <content><![CDATA[range(${1:start}, ${2:stop})]]></content>
+    <tabTrigger>range</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

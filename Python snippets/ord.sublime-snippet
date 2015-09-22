@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>ord</description>
+    <content><![CDATA[ord(${1:c})]]></content>
+    <tabTrigger>ord</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

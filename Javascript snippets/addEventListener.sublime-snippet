@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Document</description>
+    <content><![CDATA[addEventListener(${1:event}, ${2:function}, ${3:useCapture})]]></content>
+    <tabTrigger>addEventListener</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

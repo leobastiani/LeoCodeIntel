@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>hasattr</description>
+    <content><![CDATA[hasattr(${1:object}, ${2:name})]]></content>
+    <tabTrigger>hasattr</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

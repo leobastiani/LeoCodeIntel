@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>remove</description>
+    <content><![CDATA[remove(${1:char *path})]]></content>
+    <tabTrigger>remove</tabTrigger>
+    <scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

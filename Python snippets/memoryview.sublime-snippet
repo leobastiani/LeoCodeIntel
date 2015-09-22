@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>memoryview</description>
+    <content><![CDATA[memoryview(${1:obj})]]></content>
+    <tabTrigger>memoryview</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

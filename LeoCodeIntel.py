@@ -10,6 +10,7 @@ import glob
 extToSyntax = { #all allowed syntax
     'cpp': 'C++',
     'c': 'C++',
+    'h': 'C++',
     'js': 'JavaScript',
     'java': 'Java',
     'py': 'Python',
@@ -21,7 +22,19 @@ extToSyntax = { #all allowed syntax
 
 
 
-DEBUG = False #if true, see some comments on console
+DEBUG = True #if true, see some comments on console
+
+
+
+
+def debug(*args):
+    '''funciona como print, mas só é executada se sys.flags.debug == 1'''
+    if not DEBUG:
+        return ;
+    print(*args)
+
+
+
 
 
 
@@ -42,22 +55,43 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
         self.filesSyntax = {} # dicionário: filePath => syntaxe
-        self.preloadFiles = None # lista com os arquivos que devem ser carregados sempre, é um glob
+        self.preloadFiles = () # lista com os arquivos que devem ser carregados sempre, é um glob
+
+
+
+    def onLoadedSettings(self):
+        # carrega os arquivos que devem ser sempre carregados
+        # primeira vez que está carregando
+        # deve resolver o glob
+        self.preloadFiles = set(  # para remover duplicatas
+                            sum(  # transforma lista de lista em lista
+                            [glob.glob(x) for x in self.getSetting('preload_files', [])], []))
+        # exclui os arquivos que não são desejados
+        excludeFiles = self.getSetting("exclude_files", [])
+        self.preloadFiles = [os.path.abspath(filePath) for filePath in self.preloadFiles if os.path.basename(filePath) not in excludeFiles]
+
+
+        for file in self.preloadFiles:
+            self.loadFile(file)
 
 
 
 
     def getSetting(self, settingName, defaultValue=False):
+        '''retorna o valor de uma setting que pode estar
+        tanto no arquivo Settings do sublime
+        quanto no JSON que acompanha o plugin
+        não precisa incluir leocodeintel- no parametro'''
         if self.settings is None:
             # inicializa settings
             self.settings = {}
             self.pluginSettings = sublime.load_settings("leocodeintel.sublime-settings")
             self.sublimeSettings = sublime.active_window().active_view().settings()
-            if DEBUG:
-                print('LeoCodeIntel: leocodeintel-show_only_last_word:', self.getSetting("leocodeintel-show_only_last_word"))
-                print('LeoCodeIntel: leocodeintel-preload_files:', self.getSetting("leocodeintel-preload_files"))
 
 
+
+            # chama a função q deve ser chamada neste ponto
+            self.onLoadedSettings()
 
         if settingName in self.settings:
             # já teve a setting carregada, só devolve-la            
@@ -65,13 +99,15 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
         # carrega a setting e devolve-a
-        self.settings[settingName] = self.sublimeSettings.get(settingName, self.pluginSettings.get(settingName, defaultValue))
+        realSettingName = "leocodeintel-"+settingName
+        self.settings[settingName] = self.sublimeSettings.get(realSettingName, self.pluginSettings.get(realSettingName, defaultValue))
+        debug('LeoCodeIntel: %s:' % settingName, self.settings[settingName])
         return self.settings[settingName]
 
 
 
 
-    def getSyntax(self, filePath):
+    def getSyntaxByFilePath(self, filePath):
         if filePath == None:
             # não tem arquivo salvo para comparar
             return False
@@ -89,9 +125,44 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
         fileExt = fileExt[1:]
 
 
-        syntax = extToSyntax[fileExt] if fileExt in extToSyntax else 'Unknown'
+        if fileExt not in extToSyntax:
+            return False
+
+        syntax = extToSyntax[fileExt]
         self.filesSyntax[filePath] = syntax
         return syntax
+
+
+
+
+    def getSyntaxByView(self, view):
+        if not view:
+            return False
+
+        if view.file_name() is None:
+            return False
+
+
+        # a syntaxe já foi consultada antes
+        filePath = view.file_name()
+        if filePath in self.filesSyntax:
+            return self.filesSyntax[filePath]
+
+        # obtem a syntaxe pelo view
+        syntax, _ = os.path.splitext(os.path.basename(view.settings().get('syntax')))
+
+        # casos de C++
+        if syntax in ('Objective-C++', 'Objective-C', 'C'):
+            syntax = 'C++'
+
+
+        if syntax not in extToSyntax.values():
+            return False
+
+
+        self.filesSyntax[filePath] = syntax
+        return syntax
+
 
 
 
@@ -102,80 +173,76 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
         if not view:
             # caso de nenhum arquivo aberto
             return ;
-        elif not self.getSyntax(view.file_name()):
+        elif not self.getSyntaxByView(view):
             return ;
         self.loadFile(view.file_name(), False, self.getContentsFromView(view))
 
 
 
-        # carrega os arquivos que devem ser sempre carregados
-        if self.preloadFiles is None:
-            # primeira vez que está carregando
-            # deve resolver o glob
-            self.preloadFiles = set(  # para remover duplicatas
-                                sum(  # transforma lista de lista em lista
-                                [glob.glob(x) for x in self.getSetting('leocodeintel-preload_files', [])], []))
-
-
-
-        for file in self.preloadFiles:
-            self.loadFile(file)
-
 
 
     def on_post_save_async(self, view):
-        if not self.getSyntax(view.file_name()):
+        if not self.getSyntaxByView(view):
             return ;
         self.loadFile(view.file_name(), True, self.getContentsFromView(view))
-        if DEBUG:
-            print('LeoCodeIntel: completions:', self.completions)
+        debug('LeoCodeIntel: completions:', self.completions)
 
 
 
     def on_close(self, view):
-        if not self.getSyntax(view.file_name()):
+        if not self.getSyntaxByView(view):
             return ;
-        if DEBUG:
-            print('LeoCodeIntel: closed: '+os.path.basename(view.file_name()))
-        self.removeFile(view.file_name())
+        debug('LeoCodeIntel: closed: '+os.path.basename(view.file_name()))
+        self.removeFile(view.file_name(), self.getContentsFromView(view))
         self.reloadCompletions()
 
 
 
 
     def on_query_completions(self, view, prefix, locations):
-        if not self.getSyntax(view.file_name()):
+        if not self.getSyntaxByView(view):
             return []
         return self.completions
 
 
 
 
-    def removeFile(self, filePath):
+    def removeFile(self, filePath, fileContent=None):
         '''
         this function is called when a file is removed, 
         this file will be removed from self.files too
         '''
-        file_name = os.path.basename(filePath)
-        path = os.path.dirname(filePath)
-        if file_name in self.files:
-            if DEBUG:
-                print('LeoCodeIntel: removing file: '+file_name)
+        fileName = os.path.basename(filePath)
+        dirName = os.path.dirname(filePath)
+        if filePath in self.files:
+
+
+            # não remove os arquivos que são sempre carregados
+            if os.path.abspath(filePath) in self.preloadFiles:
+                # termina a função por aqui
+                return ;
+
+
+
+            # já sei que vou remover
+            debug('LeoCodeIntel: removing file: '+fileName)
 
             # deleta o arquivo em self.files
-            del self.files[file_name]
+            del self.files[filePath]
             if not os.path.exists(filePath):
                 return ; # file not exists
 
 
             # abre o arquivo para remover seus includes
-            with open(os.path.join(path, file_name), "r", encoding='utf-8') as file:
-                contents = file.read()
+            if fileContent is None:
+                with open(filePath, "r", encoding='utf-8') as file:
+                    fileContent = file.read()
 
 
-            includes = self.getIncludesFromContent(filePath, contents)
-            for include in includes:
-                self.removeFile(os.path.join(path, include))
+            # remove seus includes tmb
+            includes = self.getIncludesFromContent(filePath, fileContent)
+            for includeName in includes:
+                self.removeFile(os.path.join(dirName, includeName))
 
 
 
@@ -183,14 +250,14 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
     # carrega o arquivo filePath
-    def loadFile(self, filePath, overrideFile=False, fileContents=None):
+    def loadFile(self, filePath, overrideFile=False, fileContent=None):
         '''
         this function will load a file in self.files
         '''
 
-        file_name = os.path.basename(filePath)
+        fileName = os.path.basename(filePath)
         # não é necessário sobreescrever
-        if file_name in self.files and not overrideFile:
+        if fileName in self.files and not overrideFile:
             return ;
         dir_name = os.path.dirname(filePath)
 
@@ -198,44 +265,43 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
         # obtem o conteúdo se ele n foi passado
-        if fileContents == None:
+        if fileContent == None:
             if not os.path.exists(filePath):
                 return ; # file not exists
             with open(filePath, 'r', encoding='utf-8') as file:
-                fileContents = file.read()
+                fileContent = file.read()
 
 
 
-        if DEBUG:
-            print("LeoCodeIntel: loading file '"+file_name+"'")
+        debug("LeoCodeIntel: loading file "+fileName)
 
 
 
 
-        # reseta os snippets do arquivo file_name # clear all snippets of file_name
-        self.files[file_name] = {}
+        # reseta os snippets do arquivo filePath # clear all snippets of filePath
+        self.files[filePath] = {}
 
 
 
-        # carrega os snippets padrão do LeoCodeIntel
-        snippetsPadrao = re.findall(r'\bLeoCodeIntel\s+(\S+)\s+([^\n]+)', fileContents)
+        # carrega os snippets padrão do LeoCodeIntel, 
+        snippetsPadrao = re.findall(r'\bLeoCodeIntel\s+(\S+)\s+([^\n]+)', fileContent)
         for snippet in snippetsPadrao:
-            self.files[file_name][snippet[0]+'\t'+file_name] = snippet[1]
+            self.files[filePath][snippet[0]+'\t'+fileName] = snippet[1]
 
 
 
 
         #adding importantWords
-        importantWords = self.getImportantWordsFromContent(filePath, fileContents)
+        importantWords = self.getImportantWordsFromContent(filePath, fileContent)
         for word in importantWords:
             # adiciona o nome do arquivo como comentário
-            self.files[file_name][word+'\t'+file_name] = word
+            self.files[filePath][word+'\t'+fileName] = word
 
 
 
 
         #adicionando funcoes do tipo int func(parameters) # adding functions like int func(parameters)
-        funcs = self.getFunctionsFromContent(filePath, fileContents)
+        funcs = self.getFunctionsFromContent(filePath, fileContent)
         for (type, func_name, parameters) in funcs:
             # quebra os parametros em vírgula, se não vieram quebrados
             paramSplitted = re.split('\s*,\s*', parameters) if not isinstance(parameters, list) else parameters
@@ -260,7 +326,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
 
-                if not self.getSetting("leocodeintel-show_only_last_word", False):
+                if not self.getSetting("show_only_last_word", False):
                     # já é o próprio arg
                     snippet_word = arg
 
@@ -276,12 +342,12 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
             complemento = ', '.join(lastWords)
             if complemento == '': complemento = '()'
-            self.files[file_name][func_name+'\t'+complemento] = func_name+'('+', '.join(paramSplitted)+')'
+            self.files[filePath][func_name+'\t'+complemento] = func_name+'('+', '.join(paramSplitted)+')'
 
 
 
         #adicionando includes # adding files in #include "file"
-        includes = self.getIncludesFromContent(filePath, fileContents)
+        includes = self.getIncludesFromContent(filePath, fileContent)
         for include in includes:
             self.loadFile(os.path.join(dir_name, include))
         self.reloadCompletions()
@@ -294,9 +360,8 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
         '''
         this function makes self.completions
         '''
-        if DEBUG:
-            print('LeoCodeIntel: reloading completions')
-            print('\tfiles to process: '+', '.join(self.files.keys()))
+        debug('LeoCodeIntel: reloading completions')
+        debug('\tfiles to process: '+', '.join([os.path.basename(file)+'('+self.filesSyntax[file]+')' for file in self.files.keys()]))
         del self.completions[:]
         funcs = {} # todas as funcoes definidas
         for file in self.files.values():
@@ -321,15 +386,15 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
 
-    def getIncludesFromContent(self, filePath, fileContents):
+    def getIncludesFromContent(self, filePath, fileContent):
         '''
         return all files that is mettioned in #include "file.c"
         ['file1', 'file2', 'file3']
         '''
-        syntax = self.getSyntax(filePath)
+        syntax = self.getSyntaxByFilePath(filePath)
         if syntax == 'C++':
             result = re.findall(r'#\s*include\s*\"([^\"]+)\"', 
-                    fileContents)
+                    fileContent)
 
 
         else:
@@ -344,26 +409,26 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
 
-    def getFunctionsFromContent(self, filePath, fileContents):
+    def getFunctionsFromContent(self, filePath, fileContent):
         '''
         return all functions like (type, func_name, parameters)
         or (type, func_name, [param1, param2, param3])
         '''
-        syntax = self.getSyntax(filePath)
+        syntax = self.getSyntaxByFilePath(filePath)
         if syntax == 'C++':
             result = re.findall(r'(\w+)\**\s+(?:\w+\s+)*\**\s*(?:\w+\:\:)?(\w+)\s*\(([^\)]*)\)', 
-                fileContents)
+                fileContent)
 
 
 
         elif syntax == 'JavaScript':
             # funções do tipo func_name = function () {}
             result = re.findall(r'(\w+)\s+=\s+function\s*\(([^\)]*)\)', 
-                fileContents)
+                fileContent)
 
             # funções do tipo function func_name() {}
             result += re.findall(r'function\s+(\w+)\s*\(([^\)]*)\)', 
-                fileContents)
+                fileContent)
 
 
 
@@ -376,7 +441,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
         elif syntax == 'Java':
             result = re.findall(r'\s*(?:protected|private|public)\s+(\w+\s+)*(\w+)\(([^\)]*)\)', 
-                fileContents)
+                fileContent)
 
 
 
@@ -386,7 +451,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
         elif syntax == 'Python':
             result = re.findall(r'\bdef\s+(\w+)\(([^\)]*)\)\:', 
-                fileContents)
+                fileContent)
 
 
             # remove parametros com self e cls
@@ -426,26 +491,26 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
 
-    def getImportantWordsFromContent(self, filePath, fileContents):
+    def getImportantWordsFromContent(self, filePath, fileContent):
         '''
         return important words
         ['word1', 'word2', 'word3', ...]
         '''
-        syntax = self.getSyntax(filePath)
+        syntax = self.getSyntaxByFilePath(filePath)
         if syntax == 'C++':
             #adicionando palavras, tipo #define word # adding words like #define word
             result = re.findall(r'\#\s*define\s+(\w+)', 
-                    fileContents)
+                    fileContent)
             #adicionando palavras do tipo typedef word snippet; #adding words like typedef word
             result += re.findall(r'typedef(?:\s+\w+)+\s+(\w+)\s*;', 
-                    fileContents)
+                    fileContent)
 
 
 
         elif syntax == 'HTML':
-            classesString = re.findall(r'class="(.*?)"', fileContents)
+            classesString = re.findall(r'class="(.*?)"', fileContent)
             classes = sum([re.split(r'\s+', x) for x in classesString], [])
-            ids = re.findall(r'id="(.*?)"', fileContents)
+            ids = re.findall(r'id="(.*?)"', fileContent)
 
             return set(classes+ids)
 
@@ -453,8 +518,8 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
         elif syntax == 'JSON':
             # confere todas as aspas com apenas uma palavra
-            result = re.findall(r'"(\w+)"', 
-                    fileContents)
+            result = re.findall(r'"(\S+)"', 
+                    fileContent)
 
 
 

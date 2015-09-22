@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>exec</description>
+    <content><![CDATA[exec(${1:object})]]></content>
+    <tabTrigger>exec</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

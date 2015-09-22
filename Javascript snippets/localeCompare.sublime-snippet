@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>String</description>
+    <content><![CDATA[localeCompare(${1:compareString})]]></content>
+    <tabTrigger>localeCompare</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

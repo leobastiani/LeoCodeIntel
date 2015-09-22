@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>malloc</description>
+    <content><![CDATA[malloc(${1:size})]]></content>
+    <tabTrigger>malloc</tabTrigger>
+    <scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

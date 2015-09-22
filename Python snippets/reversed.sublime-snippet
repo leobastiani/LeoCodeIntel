@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>reversed</description>
+    <content><![CDATA[reversed(${1:seq})]]></content>
+    <tabTrigger>reversed</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

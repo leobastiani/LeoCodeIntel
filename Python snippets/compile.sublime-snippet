@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>flags=0, dont_inherit=False, optimize=-1</description>
+    <content><![CDATA[compile(${1:source}, ${2:filename}, ${3:mode})]]></content>
+    <tabTrigger>compile</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>delattr</description>
+    <content><![CDATA[delattr(${1:object}, ${2:name})]]></content>
+    <tabTrigger>delattr</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

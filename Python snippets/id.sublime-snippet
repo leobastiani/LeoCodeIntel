@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>id</description>
+    <content><![CDATA[id(${1:object})]]></content>
+    <tabTrigger>id</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

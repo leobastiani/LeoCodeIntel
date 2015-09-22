@@ -1,0 +1,6 @@
+<snippet>
+	<description>CLOCKS_PER_SEC</description>
+	<content><![CDATA[CLOCKS_PER_SEC]]></content>
+	<tabTrigger>clocks_per_sec</tabTrigger>
+	<scope>source.c, source.objc, source.c++, source.objc++</scope> 
+</snippet>

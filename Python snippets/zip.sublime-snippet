@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>zip</description>
+    <content><![CDATA[zip(${1:*iterables})]]></content>
+    <tabTrigger>zip</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

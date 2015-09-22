@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>isinstance</description>
+    <content><![CDATA[isinstance(${1:object}, ${2:classinfo})]]></content>
+    <tabTrigger>isinstance</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

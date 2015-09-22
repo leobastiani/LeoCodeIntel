@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>dir</description>
+    <content><![CDATA[dir()]]></content>
+    <tabTrigger>dir</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

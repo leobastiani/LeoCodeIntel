@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Number</description>
+    <content><![CDATA[toPrecision(${1:x})]]></content>
+    <tabTrigger>toPrecision</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

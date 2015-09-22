@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Math</description>
+    <content><![CDATA[floor(${1:x})]]></content>
+    <tabTrigger>floor</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

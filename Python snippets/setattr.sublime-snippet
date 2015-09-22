@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>setattr</description>
+    <content><![CDATA[setattr(${1:object}, ${2:name}, ${3:value})]]></content>
+    <tabTrigger>setattr</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

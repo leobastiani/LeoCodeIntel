@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>divmod</description>
+    <content><![CDATA[divmod(${1:a}, ${2:b})]]></content>
+    <tabTrigger>divmod</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

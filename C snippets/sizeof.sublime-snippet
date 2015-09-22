@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>sizeof</description>
+    <content><![CDATA[sizeof(${1:type})]]></content>
+    <tabTrigger>sizeof</tabTrigger>
+    <scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>

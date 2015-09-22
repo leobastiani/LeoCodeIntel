@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Document</description>
+    <content><![CDATA[createElement(${1:nodename})]]></content>
+    <tabTrigger>createElement</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>Global</description>
+    <content><![CDATA[isNaN(${1:value})]]></content>
+    <tabTrigger>isNaN</tabTrigger>
+    <scope>source.js</scope>
+</snippet>

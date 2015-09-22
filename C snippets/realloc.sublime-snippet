@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+<snippet>
+    <description>realloc</description>
+    <content><![CDATA[realloc(${1:ptr}, ${2:new_size})]]></content>
+    <tabTrigger>realloc</tabTrigger>
+    <scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>
