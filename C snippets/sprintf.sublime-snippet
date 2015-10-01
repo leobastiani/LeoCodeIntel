@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>sprintf</description>
-    <content><![CDATA[sprintf(${1:char *str}, ${2:const char *format}, ${3:...})]]></content>
-    <tabTrigger>sprintf</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>strpbrk</description>
-    <content><![CDATA[strpbrk(${1:src}, ${2:char *key})]]></content>
-    <tabTrigger>strpbrk</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

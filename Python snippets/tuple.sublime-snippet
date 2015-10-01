@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>tuple</description>
-    <content><![CDATA[tuple()]]></content>
-    <tabTrigger>tuple</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

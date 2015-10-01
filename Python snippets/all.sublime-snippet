@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>all</description>
-    <content><![CDATA[all(${1:iterable})]]></content>
-    <tabTrigger>all</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

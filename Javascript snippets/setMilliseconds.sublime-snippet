@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Date</description>
-    <content><![CDATA[setMilliseconds(${1:millisec})]]></content>
-    <tabTrigger>setMilliseconds</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

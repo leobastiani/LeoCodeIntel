@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>globals</description>
-    <content><![CDATA[globals()]]></content>
-    <tabTrigger>globals</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

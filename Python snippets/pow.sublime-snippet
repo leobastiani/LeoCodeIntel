@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>pow</description>
-    <content><![CDATA[pow(${1:x}, ${2:y})]]></content>
-    <tabTrigger>pow</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

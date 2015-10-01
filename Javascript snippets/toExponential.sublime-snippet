@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Number</description>
-    <content><![CDATA[toExponential(${1:x})]]></content>
-    <tabTrigger>toExponential</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>qsort</description>
-    <content><![CDATA[qsort(${1:void *array}, ${2:size_t data_count}, ${3:size_t data_size}, ${4:int func_compar})]]></content>
-    <tabTrigger>qsort</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

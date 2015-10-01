@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Math</description>
-    <content><![CDATA[tan(${1:x})]]></content>
-    <tabTrigger>tan</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Date</description>
-    <content><![CDATA[parse(${1:datestring})]]></content>
-    <tabTrigger>parse</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

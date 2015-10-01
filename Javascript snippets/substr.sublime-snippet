@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>String</description>
-    <content><![CDATA[substr(${1:start}, ${2:length})]]></content>
-    <tabTrigger>substr</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

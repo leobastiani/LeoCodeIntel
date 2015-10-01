@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Global</description>
-    <content><![CDATA[encodeURIComponent(${1:uri})]]></content>
-    <tabTrigger>encodeURIComponent</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

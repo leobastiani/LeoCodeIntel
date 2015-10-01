@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>oct</description>
-    <content><![CDATA[oct(${1:x})]]></content>
-    <tabTrigger>oct</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

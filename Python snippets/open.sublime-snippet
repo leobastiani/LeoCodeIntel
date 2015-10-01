@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None</description>
-    <content><![CDATA[open(${1:file})]]></content>
-    <tabTrigger>open</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

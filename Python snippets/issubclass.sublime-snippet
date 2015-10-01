@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>issubclass</description>
-    <content><![CDATA[issubclass(${1:class}, ${2:classinfo})]]></content>
-    <tabTrigger>issubclass</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

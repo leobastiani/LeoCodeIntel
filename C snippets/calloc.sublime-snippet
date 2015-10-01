@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>calloc</description>
-    <content><![CDATA[calloc(${1:data_count}, ${2:data_size})]]></content>
-    <tabTrigger>calloc</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

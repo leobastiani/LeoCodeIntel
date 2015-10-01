@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Document</description>
-    <content><![CDATA[importNode(${1:node}, ${2:deep})]]></content>
-    <tabTrigger>importNode</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

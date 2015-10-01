@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>String</description>
-    <content><![CDATA[toLowerCase()]]></content>
-    <tabTrigger>toLowerCase</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

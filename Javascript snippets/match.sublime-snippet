@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>String</description>
-    <content><![CDATA[match(${1:regexp})]]></content>
-    <tabTrigger>match</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>repr</description>
-    <content><![CDATA[repr(${1:object})]]></content>
-    <tabTrigger>repr</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

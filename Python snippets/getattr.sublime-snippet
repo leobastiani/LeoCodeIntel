@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>getattr</description>
-    <content><![CDATA[getattr(${1:object}, ${2:name})]]></content>
-    <tabTrigger>getattr</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

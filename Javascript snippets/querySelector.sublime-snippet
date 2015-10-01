@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Document</description>
-    <content><![CDATA[querySelector(${1:CSS selectors})]]></content>
-    <tabTrigger>querySelector</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

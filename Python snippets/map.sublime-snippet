@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>map</description>
-    <content><![CDATA[map(${1:function}, ${2:iterable}, ${3:...})]]></content>
-    <tabTrigger>map</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

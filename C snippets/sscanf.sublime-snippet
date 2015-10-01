@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>sscanf</description>
-    <content><![CDATA[sscanf(${1:char *str}, ${2:char *format}, ${3:...})]]></content>
-    <tabTrigger>sscanf</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

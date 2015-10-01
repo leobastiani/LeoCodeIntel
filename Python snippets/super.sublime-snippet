@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>super</description>
-    <content><![CDATA[super()]]></content>
-    <tabTrigger>super</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

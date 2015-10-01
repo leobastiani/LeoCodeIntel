@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Date</description>
-    <content><![CDATA[UTC(${1:year}, ${2:month}, ${3:day}, ${4:hours}, ${5:minutes}, ${6:seconds}, ${7:millisec})]]></content>
-    <tabTrigger>UTC</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

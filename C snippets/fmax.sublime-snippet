@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>fmax</description>
-    <content><![CDATA[fmax(${1:double x}, ${2:double y})]]></content>
-    <tabTrigger>fmax</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

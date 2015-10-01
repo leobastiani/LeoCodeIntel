@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>next</description>
-    <content><![CDATA[next(${1:iterator})]]></content>
-    <tabTrigger>next</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

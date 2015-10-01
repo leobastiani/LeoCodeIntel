@@ -1,6 +1,0 @@
-<snippet>
-	<description>isupper …</description>
-	<content><![CDATA[isupper(${1:int c})]]></content>
-	<tabTrigger>isupper</tabTrigger>
-	<scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

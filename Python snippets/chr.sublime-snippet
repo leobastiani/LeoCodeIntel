@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>chr</description>
-    <content><![CDATA[chr(${1:i})]]></content>
-    <tabTrigger>chr</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

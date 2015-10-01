@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>max</description>
-    <content><![CDATA[max(${1:int x}, ${2:int y})]]></content>
-    <tabTrigger>max</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>freopen</description>
-    <content><![CDATA[freopen(${1:char *file_name_src}, ${2:mode}, ${3:FILE *file_dest})]]></content>
-    <tabTrigger>freopen</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

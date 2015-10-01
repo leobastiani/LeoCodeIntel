@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Global</description>
-    <content><![CDATA[unescape(${1:string})]]></content>
-    <tabTrigger>unescape</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

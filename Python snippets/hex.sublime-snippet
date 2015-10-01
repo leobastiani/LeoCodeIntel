@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>hex</description>
-    <content><![CDATA[hex(${1:x})]]></content>
-    <tabTrigger>hex</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>strcmp</description>
-    <content><![CDATA[strcmp(${1:str1}, ${2:str2})]]></content>
-    <tabTrigger>strcmp</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

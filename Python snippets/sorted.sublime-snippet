@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>sorted</description>
-    <content><![CDATA[sorted(${1:iterable})]]></content>
-    <tabTrigger>sorted</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

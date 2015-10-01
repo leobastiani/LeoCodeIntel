@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Date</description>
-    <content><![CDATA[setHours(${1:hour}, ${2:min}, ${3:sec}, ${4:millisec})]]></content>
-    <tabTrigger>setHours</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>String</description>
-    <content><![CDATA[charAt(${1:index})]]></content>
-    <tabTrigger>charAt</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

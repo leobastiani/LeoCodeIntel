@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Global</description>
-    <content><![CDATA[parseFloat(${1:string})]]></content>
-    <tabTrigger>parseFloat</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

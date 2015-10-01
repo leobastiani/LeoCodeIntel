@@ -1,6 +1,0 @@
-<snippet>
-	<description>islower …</description>
-	<content><![CDATA[islower(${1:int c})]]></content>
-	<tabTrigger>islower</tabTrigger>
-	<scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

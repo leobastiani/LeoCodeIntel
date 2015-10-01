@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>globals=None, locals=None, fromlist=(), level=0</description>
-    <content><![CDATA[__import__()]]></content>
-    <tabTrigger>__import__</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>return void *</description>
-    <content><![CDATA[memchr(${1:void *ptr}, ${2:int value}, ${3:size_t num})]]></content>
-    <tabTrigger>memchr</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

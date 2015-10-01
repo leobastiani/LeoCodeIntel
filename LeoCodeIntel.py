@@ -22,7 +22,7 @@ extToSyntax = { #all allowed syntax
 
 
 
-DEBUG = True #if true, see some comments on console
+DEBUG = False #if true, see some comments on console
 
 
 
@@ -46,7 +46,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
     def __init__(self):
         self.completions = [] # aqui vao todos os snippets, é regenerado a todo momento # all snippets, it will be regenerate everytime
         self.files = {} # aqui vao todos os arquivos # all files
-        # self.files['file.c']['func'] vao todas as palavras # self.files['file.c']['func'] == self.completions['func']
+        # self.files['C:\\file.c']['func'] vao todas as palavras # self.files['C:\\file.c']['func'] == self.completions['func']
 
         # define as Settings
         self.settings = None # será um dict: nome da setting => chave
@@ -194,7 +194,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
             return ;
         debug('LeoCodeIntel: closed: '+os.path.basename(view.file_name()))
         self.removeFile(view.file_name(), self.getContentsFromView(view))
-        self.reloadCompletions()
+        self.reloadCompletions(self.getSyntaxByView(view))
 
 
 
@@ -272,8 +272,8 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
                 fileContent = file.read()
 
 
-
-        debug("LeoCodeIntel: loading file "+fileName)
+        syntax = self.getSyntaxByFilePath(filePath)
+        debug("LeoCodeIntel: loading file "+fileName+"("+syntax+")")
 
 
 
@@ -350,13 +350,13 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
         includes = self.getIncludesFromContent(filePath, fileContent)
         for include in includes:
             self.loadFile(os.path.join(dir_name, include))
-        self.reloadCompletions()
+        self.reloadCompletions(syntax)
 
 
 
 
 
-    def reloadCompletions(self):
+    def reloadCompletions(self, syntax):
         '''
         this function makes self.completions
         '''
@@ -364,10 +364,15 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
         debug('\tfiles to process: '+', '.join([os.path.basename(file)+'('+self.filesSyntax[file]+')' for file in self.files.keys()]))
         del self.completions[:]
         funcs = {} # todas as funcoes definidas
-        for file in self.files.values():
-            for func in file:
+        for filePath in self.files:
+
+            # só aceita arquivos da mesma syntax
+            if self.getSyntaxByFilePath(filePath) != syntax:
+                continue
+
+            for func in self.files[filePath]:
                 if func not in funcs:
-                    self.completions += [(func, file[func])]
+                    self.completions += [(func, self.files[filePath][func])]
                     funcs[func] = True
 
 

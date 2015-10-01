@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Global</description>
-    <content><![CDATA[parseInt(${1:string}, ${2:radix})]]></content>
-    <tabTrigger>parseInt</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

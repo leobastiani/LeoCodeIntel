@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>bsearch</description>
-    <content><![CDATA[bsearch(${1:void *key}, ${2:void *array}, ${3:size_t data_count}, ${4:size_t data_size}, ${5:int func_compar})]]></content>
-    <tabTrigger>bsearch</tabTrigger>
-    <scope>source.c, source.objc, source.c++, source.objc++</scope>
-</snippet>

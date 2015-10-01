@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Document</description>
-    <content><![CDATA[getElementsByName(${1:name})]]></content>
-    <tabTrigger>getElementsByName</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

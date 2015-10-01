@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Math</description>
-    <content><![CDATA[random()]]></content>
-    <tabTrigger>random</tabTrigger>
-    <scope>source.js</scope>
-</snippet>

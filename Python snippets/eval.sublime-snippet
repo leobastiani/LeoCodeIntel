@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>globals=None, locals=None</description>
-    <content><![CDATA[eval(${1:expression})]]></content>
-    <tabTrigger>eval</tabTrigger>
-    <scope>source.python</scope>
-</snippet>

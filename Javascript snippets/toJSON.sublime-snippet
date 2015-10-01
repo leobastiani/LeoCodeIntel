@@ -1,7 +1,0 @@
-<!-- THIS WAS AUTOMATED GENERATED -->
-<snippet>
-    <description>Date</description>
-    <content><![CDATA[toJSON()]]></content>
-    <tabTrigger>toJSON</tabTrigger>
-    <scope>source.js</scope>
-</snippet>
