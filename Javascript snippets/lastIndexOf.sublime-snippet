@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>Array</description>
+        <content><![CDATA[lastIndexOf(${1:item}, ${2:start})]]></content>
+        <tabTrigger>lastIndexOf</tabTrigger>
+        <scope>source.js</scope>
+    </snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>iscntrl</description>
+        <content><![CDATA[iscntrl(${1:int c})]]></content>
+        <tabTrigger>iscntrl</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

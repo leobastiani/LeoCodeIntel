@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>pthread_kill</description>
+        <content><![CDATA[pthread_kill(${1:pthread_t thread}, ${2:int sig})]]></content>
+        <tabTrigger>pthread_kill</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

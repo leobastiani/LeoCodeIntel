@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>pthread_mutex_unlock</description>
+        <content><![CDATA[pthread_mutex_unlock(${1:pthread_mutex_t *mutex})]]></content>
+        <tabTrigger>pthread_mutex_unlock</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>char str[n]</description>
+        <content><![CDATA[snprintf(${1:char *str}, ${2:size_t n}, ${3:char *format}, ${4:...})]]></content>
+        <tabTrigger>snprintf</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

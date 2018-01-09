@@ -17,8 +17,22 @@ extToSyntax = { #all allowed syntax
     'json': 'JSON',
     'html': 'HTML',
     'htm': 'HTML',
+    'pl': 'Prolog',
 }
 
+
+compartilhaSyntax = {
+    # aparecem em    os snippets do
+    'JavaScript':    ['HTML'],
+}
+
+
+
+
+KB = 1024
+
+# é o tamanho do arquivo jquery.min.js
+tamanhoMaxArquivo = 80 * KB
 
 
 
@@ -262,6 +276,14 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
         dir_name = os.path.dirname(filePath)
 
 
+        # se o arquivo for mto grande, não analisa
+        fileSize = os.path.getsize(filePath)
+        if fileSize >= tamanhoMaxArquivo:
+            # este arquivo é mto grande
+            debug('O arquivo "%s" é muito grande para ser processado, com %d bytes.' % (filePath, fileSize))
+            return ;
+
+
 
 
         # obtem o conteúdo se ele n foi passado
@@ -295,7 +317,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
         importantWords = self.getImportantWordsFromContent(filePath, fileContent)
         for word in importantWords:
             # adiciona o nome do arquivo como comentário
-            self.files[filePath][word+'\t'+fileName] = word
+            self.files[filePath][word] = word
 
 
 
@@ -320,8 +342,8 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
                 # ultima palavra do parametro
-                search = re.search('(\w+)\s*$', arg)
-                lastWord = search.group() if search is not None else arg
+                search = re.findall(r'([A-z_]\w*)', arg)
+                lastWord = search[-1] if search != [] else arg
                 lastWords += [lastWord]
 
 
@@ -336,7 +358,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
                     snippet_word = lastWord
                     
 
-                paramSplitted[i] = '${'+str(i+1)+':'+snippet_word+'}'
+                paramSplitted[i] = '${'+str(i+1)+':'+re.sub(r'\$', '\\$', snippet_word)+'}'
 
 
 
@@ -362,13 +384,22 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
         '''
         debug('LeoCodeIntel: reloading completions')
         debug('\tfiles to process: '+', '.join([os.path.basename(file)+'('+self.filesSyntax[file]+')' for file in self.files.keys()]))
-        del self.completions[:]
+        self.completions = []
         funcs = {} # todas as funcoes definidas
         for filePath in self.files:
 
             # só aceita arquivos da mesma syntax
-            if self.getSyntaxByFilePath(filePath) != syntax:
-                continue
+            syntaxFile = self.getSyntaxByFilePath(filePath)
+            if syntaxFile != syntax:
+
+                # pode ser que essa syntaxe queira compartilhar entre arquivos
+                cs = compartilhaSyntax.get(syntax)
+                if cs is None:
+                    continue
+
+                if syntaxFile not in cs:
+                    continue
+
 
             for func in self.files[filePath]:
                 if func not in funcs:
@@ -421,15 +452,35 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
         '''
         syntax = self.getSyntaxByFilePath(filePath)
         if syntax == 'C++':
-            result = re.findall(r'(\w+)\**\s+(?:\w+\s+)*\**\s*(?:\w+\:\:)?(\w+)\s*\(([^\)]*)\)', 
+            result = re.findall(r'(\w+)\** +(?:\w+ +)*\** *(?:\w+\:\:)?(\w+) *\(([^\)]*)\)', 
                 fileContent)
+            # exmplo de result[0] = ('void', '_scanf_s', 'char *str, int size')
 
 
 
         elif syntax == 'JavaScript':
             # funções do tipo func_name = function () {}
-            result = re.findall(r'(\w+)\s+=\s+function\s*\(([^\)]*)\)', 
+            result = re.findall(r'([\w\.]+)\s*[=:]\s*function\s*\(([^\)]*)\)', 
                 fileContent)
+            # exemplo de função requisitada da linha acima
+            # [('onJsLoad', ''), ('onLoadAllIdLattes', '')]
+
+            def removePrototype(result, dotPrototype):
+                # muda as funções que possuem .prototype. no meio da sentença
+                for i, elem in enumerate(result):
+                    nomeFn = elem[0]
+                    dotProtPos = nomeFn.find(dotPrototype)
+                    if dotProtPos == -1:
+                        # se não encontrou .prototype. na sentença
+                        # só sai
+                        continue
+
+                    # encontramos .prototype., devo remove-lo
+                    novoNomeFn = nomeFn[dotProtPos+len(dotPrototype):]
+                    result[i] = (novoNomeFn, elem[1])
+                return result
+            result = removePrototype(result, '.prototype.')
+            result = removePrototype(result, '.fn.')
 
             # funções do tipo function func_name() {}
             result += re.findall(r'function\s+(\w+)\s*\(([^\)]*)\)', 
@@ -450,6 +501,10 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
 
+        elif syntax == 'Prolog':
+            result = re.findall(r'(\w+)\((.*?)\)\s*\:\-', 
+                fileContent)
+            result = [(None, x[0], x[1]) for x in result]
 
 
 
@@ -461,7 +516,12 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
             # remove parametros com self e cls
             for i, elem in enumerate(result):
-                parameters = re.split(r'\s*,\s*', elem[1])
+                parameters = elem[1]
+                # remove todas as strings
+                # para não haver conflito com strings com vírgulas
+                parameters = re.sub(r'([\'\"])(?:[^"\\]|\\.)*\1', 'None', parameters)
+                # separa os parametros por vírgula
+                parameters = re.split(r'\s*,\s*', parameters)
 
                 # se o primeiro parametro for self ou cls, pula ele
                 if parameters[0] == 'self' or parameters[0] == 'cls':
@@ -471,7 +531,7 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
 
 
 
-            result = [(None, x[0], x[1]) for x in result if not re.match('\_\_\w+\_\_', x[0])]
+            result = [(None, x[0], x[1]) for x in result if not re.match(r'__\w+__', x[0])]
 
 
 
@@ -508,6 +568,28 @@ class LeoCodeIntelEventListener(sublime_plugin.EventListener):
                     fileContent)
             #adicionando palavras do tipo typedef word snippet; #adding words like typedef word
             result += re.findall(r'typedef(?:\s+\w+)+\s+(\w+)\s*;', 
+                    fileContent)
+
+
+        elif syntax == 'JavaScript':
+            # palavras do tipo
+            # var (palavra) = 
+            result = re.findall(r'\s+([\w\$]+)\s*=[^=]', 
+                    fileContent)
+            isFunc = re.findall(r'\s+([\w\$]+)\s*=\s*function', 
+                    fileContent)
+            # retira o $
+            result = [x.replace('$', '\\$') for x in result if x not in isFunc]
+
+            # palavras do tipo function((param1), (param2)) { }
+            result += re.findall(r'function\s*\w*\s*\((?:(?:\s*,\s*)?(\w+))+\)',
+                fileContent)
+
+
+        elif syntax == 'Python':
+            # palavras do tipo
+            # (palavra) = 
+            result = re.findall(r'\s+([\w\$]+)\s*=[^=]', 
                     fileContent)
 
 

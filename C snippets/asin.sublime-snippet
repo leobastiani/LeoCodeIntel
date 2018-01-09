@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>asin</description>
+        <content><![CDATA[asin(${1:x})]]></content>
+        <tabTrigger>asin</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

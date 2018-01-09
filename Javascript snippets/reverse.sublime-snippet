@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>Array</description>
+        <content><![CDATA[reverse()]]></content>
+        <tabTrigger>reverse</tabTrigger>
+        <scope>source.js</scope>
+    </snippet>

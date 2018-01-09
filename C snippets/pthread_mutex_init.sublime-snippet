@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>pthread_mutex_init</description>
+        <content><![CDATA[pthread_mutex_init(${1:pthread_mutex_t *mutex}, ${2:const pthread_mutexattr_t *attr})]]></content>
+        <tabTrigger>pthread_mutex_init</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

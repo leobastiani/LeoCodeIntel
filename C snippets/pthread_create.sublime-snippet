@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>pthread_create</description>
+        <content><![CDATA[pthread_create(${1:pthread_t *thread}, ${2:pthread_attr_t *attr}, ${3:void *funcStartRoutine}, ${4:void *arg})]]></content>
+        <tabTrigger>pthread_create</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

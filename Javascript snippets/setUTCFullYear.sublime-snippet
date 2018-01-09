@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>Date</description>
+        <content><![CDATA[setUTCFullYear(${1:year}, ${2:month}, ${3:day})]]></content>
+        <tabTrigger>setUTCFullYear</tabTrigger>
+        <scope>source.js</scope>
+    </snippet>

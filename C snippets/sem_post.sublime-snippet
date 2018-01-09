@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>sem_post</description>
+        <content><![CDATA[sem_post(${1:sem_t *sem})]]></content>
+        <tabTrigger>sem_post</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

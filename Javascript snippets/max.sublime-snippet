@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>Math</description>
+        <content><![CDATA[max(${1:n1}, ${2:n2})]]></content>
+        <tabTrigger>max</tabTrigger>
+        <scope>source.js</scope>
+    </snippet>

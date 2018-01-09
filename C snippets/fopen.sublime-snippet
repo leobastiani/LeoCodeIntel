@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>fopen</description>
+        <content><![CDATA[fopen(${1:file_name}, ${2:mode})]]></content>
+        <tabTrigger>fopen</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

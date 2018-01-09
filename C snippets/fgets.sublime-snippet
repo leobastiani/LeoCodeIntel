@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>fgets</description>
+        <content><![CDATA[fgets(${1:char *str}, ${2:int str_size}, ${3:FILE *stream})]]></content>
+        <tabTrigger>fgets</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

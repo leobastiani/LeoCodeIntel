@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>putchar</description>
+        <content><![CDATA[putchar(${1:int character})]]></content>
+        <tabTrigger>putchar</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

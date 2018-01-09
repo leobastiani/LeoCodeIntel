@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>gettimeofday</description>
+        <content><![CDATA[gettimeofday(${1:struct timeval *tv}, ${2:struct timezone *tz})]]></content>
+        <tabTrigger>gettimeofday</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>n = strlen(src)</description>
+        <content><![CDATA[strncat()]]></content>
+        <tabTrigger>strncat</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>pthread_cond_wait</description>
+        <content><![CDATA[pthread_cond_wait(${1:pthread_cond_t *cond}, ${2:pthread_mutex_t *mutex})]]></content>
+        <tabTrigger>pthread_cond_wait</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

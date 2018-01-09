@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>strspn</description>
+        <content><![CDATA[strspn(${1:src}, ${2:char *key})]]></content>
+        <tabTrigger>strspn</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

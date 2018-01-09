@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>memmove</description>
+        <content><![CDATA[memmove(${1:void *dest}, ${2:void *src}, ${3:size_t num})]]></content>
+        <tabTrigger>memmove</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

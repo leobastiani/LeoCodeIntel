@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>Number</description>
+        <content><![CDATA[toFixed(${1:x})]]></content>
+        <tabTrigger>toFixed</tabTrigger>
+        <scope>source.js</scope>
+    </snippet>

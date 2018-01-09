@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>sem_wait</description>
+        <content><![CDATA[sem_wait(${1:sem_t *sem})]]></content>
+        <tabTrigger>sem_wait</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

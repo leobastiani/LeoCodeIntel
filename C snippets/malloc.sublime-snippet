@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>malloc</description>
+        <content><![CDATA[(${3:void *}) malloc(sizeof(${1:size}) * ${2:count})]]></content>
+        <tabTrigger>malloc</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>pthread_join</description>
+        <content><![CDATA[pthread_join(${1:pthread_t thread}, ${2:void **retval})]]></content>
+        <tabTrigger>pthread_join</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

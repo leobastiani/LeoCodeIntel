@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>return fraction part</description>
+        <content><![CDATA[modf(${1:double param}, ${2:double *intpart})]]></content>
+        <tabTrigger>modf</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

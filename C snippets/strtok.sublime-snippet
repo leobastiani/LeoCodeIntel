@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>strtok</description>
+        <content><![CDATA[strtok(${1:str}, ${2:char *delimiters})]]></content>
+        <tabTrigger>strtok</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

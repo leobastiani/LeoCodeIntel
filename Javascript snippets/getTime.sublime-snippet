@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>Date</description>
+        <content><![CDATA[getTime()]]></content>
+        <tabTrigger>getTime</tabTrigger>
+        <scope>source.js</scope>
+    </snippet>

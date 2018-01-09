@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>rename</description>
+        <content><![CDATA[rename(${1:char *old_path}, ${2:char *new_path})]]></content>
+        <tabTrigger>rename</tabTrigger>
+        <scope>source.c, source.objc, source.c++, source.objc++</scope>
+    </snippet>

@@ -1,0 +1,7 @@
+<!-- THIS WAS AUTOMATED GENERATED -->
+    <snippet>
+        <description>Math</description>
+        <content><![CDATA[log(${1:x})]]></content>
+        <tabTrigger>log</tabTrigger>
+        <scope>source.js</scope>
+    </snippet>
